@@ -27,10 +27,10 @@ define(function(require, exports, module) {
      * @param {string} [options.content] inner (HTML) content of surface
      * @param {boolean} [options.autoplay] autoplay
      */
+
     function VideoSurface(options) {
         this._videoUrl = undefined;
         this.options = Object.create(VideoSurface.DEFAULT_OPTIONS);
-        if (options) this.setOptions(options);
 
         Surface.apply(this, arguments);
     }
@@ -56,6 +56,7 @@ define(function(require, exports, module) {
         for (var key in VideoSurface.DEFAULT_OPTIONS) {
             if (options[key] !== undefined) this.options[key] = options[key];
         }
+        Surface.prototype.setOptions.apply(this, arguments);
     };
 
     /**
