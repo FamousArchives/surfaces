@@ -27,6 +27,7 @@ define(function(require, exports, module) {
      * @param {string} [options.content] inner (HTML) content of surface
      * @param {boolean} [options.autoplay] autoplay
      */
+
     function VideoSurface(options) {
         this._videoUrl = undefined;
         this.options = Object.create(VideoSurface.DEFAULT_OPTIONS);
@@ -38,7 +39,8 @@ define(function(require, exports, module) {
     VideoSurface.prototype.constructor = VideoSurface;
 
     VideoSurface.DEFAULT_OPTIONS = {
-        autoplay: false
+        autoplay: false,
+        loop: false
     };
 
     VideoSurface.prototype.elementType = 'video';
@@ -80,6 +82,7 @@ define(function(require, exports, module) {
     VideoSurface.prototype.deploy = function deploy(target) {
         target.src = this._videoUrl;
         target.autoplay = this.options.autoplay;
+        target.loop = this.options.loop;
     };
 
     /**
